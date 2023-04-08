@@ -13,6 +13,13 @@ In order to run the action, add it to your yml file
   with:
     file-to-check: "{path_to_your_file}"
 ```
+you can add multiple files as well, if they are comma separated:
+```yml
+- name: Run URL check script
+  uses: adriancoman/link-checks-action@0.1.0
+  with:
+    file-to-check: "{path_to_1st_file},{path_to_2nd_file},{path_to_3rd_file}"
+```
 
 ## Use cases
 For our mobile app, we usually hold all of our T&C or external links in a file with constant values, ex:
@@ -27,7 +34,7 @@ So I created this action to notify us if a URL is broken.
 ## Contribution
 There are a lot of improvements that can be added, from the top of my head:
 - Check only modified files
-- Accept a list of params, instead of a single file
+- ~Accept a list of params, instead of a single file~
 - Change the http response code to be valid in the intervel [200..300)
 
 But for now, it's a simple scrip that just works and it does it's job.
