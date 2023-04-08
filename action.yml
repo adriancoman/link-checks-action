@@ -16,6 +16,6 @@ runs:
   steps:
     - name: Run script
       run: |
-      chmod +x ${GITHUB_ACTION_PATH}/script.sh
-      ${GITHUB_ACTION_PATH}/script.sh ${{ inputs.file-to-check }}
+        chmod +x ${GITHUB_ACTION_PATH}/script.sh
+        ${GITHUB_ACTION_PATH}/script.sh ${{ inputs.file-to-check }}
       shell: bash
