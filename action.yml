@@ -5,9 +5,11 @@ branding:
   icon: 'link'
   color: 'white'  
 inputs:
-  file:
+  file-to-check:
     required: true
     default: "."
 runs:
-  using: 'node16'
-  main: 'index.js'
+  using: composite
+  steps:
+    - name: Run script
+      run: ${GITHUB_ACTION_PATH}/script.sh ${{ inputs.file-to-check }}
