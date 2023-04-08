@@ -1,9 +1,13 @@
-name: Link-checks-action
+name: Link check action
 description: Check if the links from your poject are valid or not, if they return a 404 or if they return a 200 and work.
 author: Adrian Coman
 branding:
   icon: 'link'
   color: 'white'  
+inputs:
+  file:
+    required: true
+    default: "."
 runs:
   using: 'node16'
   main: 'index.js'
