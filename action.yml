@@ -13,3 +13,4 @@ runs:
   steps:
     - name: Run script
       run: ${GITHUB_ACTION_PATH}/script.sh ${{ inputs.file-to-check }}
+      shell: bash
