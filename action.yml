@@ -15,5 +15,7 @@ runs:
   using: composite
   steps:
     - name: Run script
-      run: ${GITHUB_ACTION_PATH}/script.sh ${{ inputs.file-to-check }}
+      run: |
+      chmod +x ${GITHUB_ACTION_PATH}/script.sh
+      ${GITHUB_ACTION_PATH}/script.sh ${{ inputs.file-to-check }}
       shell: bash
