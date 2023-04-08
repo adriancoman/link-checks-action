@@ -1,14 +1,18 @@
 #!/bin/bash
 
 # Change this value to match the name of your Kotlin file
-FILE="$1"
+FILE="PagoConfig/Configs/RO/LegalRO.swift,PagoConfig/Configs/EN/LegalEN.swift"
 
-# Define a regular expression to match URLs
-URL_PATTERN='"http[s]?://\S+"'
+# Split the file names into an array
+IFS=',' read -ra FILE_ARRAY <<< "$FILE"
 
-# Find all URLs in the file and remove duplicates
-# URLS=$(grep -oE "$URL_PATTERN" "$FILENAME" | sort | uniq)
-URLS=$(grep -o 'https\?://[a-zA-Z0-9./?=_&-]\+' $FILE)
+# Use grep to find all the URLs in each file
+URLS=""
+for filename in "${FILE_ARRAY[@]}"
+do
+    urls=$(grep -o 'https\?://[a-zA-Z0-9./?=_&-]\+' $filename)
+    URLS="$URLS $urls"
+done
 
 # Check the status code of each URL with curl
 i=0
