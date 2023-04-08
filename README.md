@@ -1,19 +1,17 @@
 # Link checks action
 
-GitHub action that checks if the links provided in a file are valid (they return a 200 response code) or if they return an error.
-
-We found that when adding new links some bad copy paste could happen that's easy to miss. As well, it can happen during a refactor that involces a lot of renaming. 
-This action is a safety net to make sure our URLs not get shipped broken.
+The Link Checks Action is a GitHub Action that checks if the links provided in a file are valid. It ensures that the links return a 200 response code and do not return an error. This is a safety net to ensure that URLs are not shipped broken due to mistakes that may occur during copy-pasting or refactoring.
 
 ## Hot to use
-In order to run the action, add it to your yml file
+To use this action, add it to your YML file and specify the file or files you want to check.
 ```yml
 - name: Run URL check script
   uses: adriancoman/link-checks-action@0.1.0
   with:
     file-to-check: "{path_to_your_file}"
 ```
-you can add multiple files as well, if they are comma separated:
+
+You can add multiple files as well, if they are comma separated:
 ```yml
 - name: Run URL check script
   uses: adriancoman/link-checks-action@0.1.0
@@ -22,14 +20,15 @@ you can add multiple files as well, if they are comma separated:
 ```
 
 ## Use cases
-For our mobile app, we usually hold all of our T&C or external links in a file with constant values, ex:
+This action is particularly useful for mobile apps that hold external links in a file with constant values. For example:
 ```kotlin
 object UrlConstants {
     const val TERMS = "https://www.my_awesome_website.com/terms.html"
     const val PRIVACY = "https://www.my_awesome_website.com/privacy.html"
 }
 ```
-So I created this action to notify us if a URL is broken.
+By using the Link Checks Action, you can be notified if a URL is broken.
+
 
 ## Contribution
 There are a lot of improvements that can be added, from the top of my head:
@@ -37,11 +36,11 @@ There are a lot of improvements that can be added, from the top of my head:
 - ~Accept a list of params, instead of a single file~
 - Change the http response code to be valid in the intervel [200..300)
 
-But for now, it's a simple scrip that just works and it does it's job.
-
+However, for now, it is a simple script that works and does its job.
 
 ## Full working example
-```
+The YAL file bellow is a working example of how to use the Link Checks Action in your workflow.
+```yml
 on:
   pull_request:
     branches:
@@ -56,5 +55,5 @@ jobs:
       - name: Link check action
         uses: adriancoman/link-checks-action@0.1.0
         with:
-          file-to-check: "components/src/main/java/app/pago/components/ui/misc/terms/UrlConstants.kt"
+          file-to-check: "components/src/main/java/app/components/ui/misc/terms/UrlConstants.kt"
 ```
