@@ -9,7 +9,7 @@ This action is a safety net to make sure our URLs not get shipped broken.
 In order to run the action, add it to your yml file
 ```yml
 - name: Run URL check script
-  uses: adriancoman/link_checks@1.0.0
+  uses: adriancoman/link-checks-action@0.1.0
   with:
     file-to-check: "{path_to_your_file}"
 ```
@@ -31,3 +31,23 @@ There are a lot of improvements that can be added, from the top of my head:
 - Change the http response code to be valid in the intervel [200..300)
 
 But for now, it's a simple scrip that just works and it does it's job.
+
+
+## Full working example
+```
+on:
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  check_urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Link check action
+        uses: adriancoman/link-checks-action@0.1.0
+        with:
+          file-to-check: "components/src/main/java/app/pago/components/ui/misc/terms/UrlConstants.kt"
+```
