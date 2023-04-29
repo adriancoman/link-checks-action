@@ -15,5 +15,5 @@ jobs:
 
       - name: Run tests
         run: |
-          cd tests
+          cd test
           ./testLinks.sh
