@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change this value to match the name of your Kotlin file
-FILE="PagoConfig/Configs/RO/LegalRO.swift,PagoConfig/Configs/EN/LegalEN.swift"
+FILE="$1"
 
 # Split the file names into an array
 IFS=',' read -ra FILE_ARRAY <<< "$FILE"
