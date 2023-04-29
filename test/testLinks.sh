@@ -22,10 +22,18 @@ touch test-file2.txt
 echo "https://www.yahoo.com
 http://www.thereisnotwaythispagecaneverexistforrreal.com" > test-file2.txt
 
-output=$(../script.sh test-file2.txt 2>&1)  # Capture both stdout and stderr
+output=$(../script.sh test-file2.txt)
 
 if [ $? -ne 1 ]; then
   echo "Test case 2 failed: Script should exit with an error"
+  exit 1
+fi
+
+# Test case 3: script accepts both files as params, and exists if a url returns HTTP 404
+output=$(../script.sh test-file1.txt,test-file2.txt)
+
+if [ $? -ne 1 ]; then
+  echo "Test case 3 failed: Script should exit with an error"
   exit 1
 fi
 
