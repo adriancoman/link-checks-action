@@ -1,3 +1,5 @@
+![CI](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+
 # Link checks action
 
 The Link Checks Action is a GitHub Action that checks if the links provided in a file are valid. It ensures that the links return a 200 response code and do not return an error. This is a safety net to ensure that URLs are not shipped broken due to mistakes that may occur during copy-pasting or refactoring.
